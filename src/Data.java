@@ -33,7 +33,7 @@ public class Data
 	public static float lambda = 1.0f; // when lambda=1, uses auxiliary data
 	 
 	// learning rate $\gamma$
-	public static float gamma = 100f;
+	public static float gamma = 1000f;
 	
 	public static float rho = 0.8f;
 
@@ -55,7 +55,7 @@ public class Data
 	public static float MaxRating = 5.0f; // maximum rating value
 
 	// scan number over the whole data
-	public static int num_iterations = 100; 
+	public static int num_iterations = 600; 
 
 	// === training data (target data and auxiliary dta)
 	public static int[] indexUserTrain; // start from index "0"
@@ -86,10 +86,10 @@ public class Data
 	public static float[][] V1;
 	public static float[][][] G;  
 
-	public static float g_avg; // global average rating $\mu$
+/*	public static float g_avg; // global average rating $\mu$
 	public static float[] biasU;  // bias of user
 	public static float[] biasV;  // bias of item
-
+*/
 	// === file operation
 	public static FileWriter fw ;
 	public static BufferedWriter bw;

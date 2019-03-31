@@ -13,59 +13,7 @@ public class Train_target {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		/*	double one_div_N = 1.0 / Data.n;
-			double one_div_M = 1.0 / Data.m;
-			for (int iter_rand = 0; iter_rand < Data.num_train; iter_rand++) 
-			{   	    		
-				// ===========================================
-				// --- random sampling one triple of (userID,itemID,rating), Math.random(): [0.0, 1.0)
-				int rand_case = (int) Math.floor( Math.random() * Data.num_train );
-				int userID = Data.indexUserTrain[rand_case];	    		
-				int itemID = Data.indexItemTrain[rand_case];
-				float rating = Data.ratingTrain[rand_case];
-				// ===========================================	    		
 	
-				// ===========================================
-	
-				float pred = 0;
-				
-	
-				for (int f=0; f<Data.d; f++)
-				{
-					pred += Data.U[userID][f] * Data.V[itemID][f];
-				}
-				
-			//	pred += Data.g_avg + Data.biasU[userID] + Data.biasV[itemID];
-				float error = rating - pred;
-					// -----------------------
-				
-				// -----------------------
-				// --- update \mu    			
-			//	Data.g_avg = Data.g_avg - Data.gamma * ( -error );
-
-				// --- biasU, biasV
-			//	Data.biasU[userID] = Data.biasU[userID] - Data.gamma * ( -error + Data.beta_u * Data.biasU[userID] );
-			//	Data.biasV[itemID] = Data.biasV[itemID] - Data.gamma * ( -error + Data.beta_v * Data.biasV[itemID] );
-	
-				// -----------------------
-				// --- update U, V
-				//float [] V_before_update = new float[Data.d];
-				for(int f=0; f<Data.d; f++)
-				{	
-				//	V_before_update[f] = Data.V[itemID][f];
-
-					float grad_U_f = -error * Data.V[itemID][f] + Data.alpha_u * Data.U[userID][f];
-					float grad_V_f = -error * Data.U[userID][f]   + Data.alpha_v * Data.V[itemID][f];
-					Data.U[userID][f] = (float) (Data.U[userID][f] - Data.gamma * grad_U_f * one_div_N);
-					Data.V[itemID][f] = (float) (Data.V[itemID][f] - Data.gamma * grad_V_f * one_div_M);		    			
-				}
-
-				// -----------------------	    			
-				
-					
-			}*/
-				// ===========================================
-
 			double one_div_NM =  1.0 / (Data.n * Data.m);
 			for (int u = 1; u <= Data.n; u++) {
 				float grad_U[] = new float[Data.d];
@@ -109,7 +57,7 @@ public class Train_target {
 				}
 				for(int f=0; f<Data.d; f++) Data.V[i][f] = (float) (Data.V[i][f] - Data.gamma * grad_V[f] * one_div_NM);
 			}
-			//Data.gamma = (float) (Data.gamma * 0.9);
+			Data.gamma = (float) (Data.gamma * ((float)(200 * iterations) / (iter + 200 * iterations)) );
 		} 	
 		//long endTime=System.nanoTime(); 
 

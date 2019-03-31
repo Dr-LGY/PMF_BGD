@@ -60,7 +60,7 @@ public class Test
     		
     		// ===========================================    		
     		// --- prediction via inner product
-    		float pred = Data.g_avg + Data.biasU[userID] + Data.biasV[itemID];
+    		float pred = 0;//Data.g_avg + Data.biasU[userID] + Data.biasV[itemID];
     		for (int f=0; f<Data.d; f++)
     		{
     			pred +=  Data.U[userID][f] * Data.V[itemID][f];	
@@ -102,7 +102,7 @@ public class Test
 //		}
     }
     // =============================================================
-    
+    /*
     
     public static void test1() throws IOException 
 	{       	
@@ -150,7 +150,7 @@ public class Test
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-    }
+    }*/
 }
 
 

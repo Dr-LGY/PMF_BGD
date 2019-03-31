@@ -20,7 +20,7 @@ public class ReadData
         
         // ----------------------------------------------------  
         // global average rating $\mu$
-        Data.g_avg = 0;  
+      //  Data.g_avg = 0;  
         
     	// --- number of target training records
         Data.num_train = 0;	
@@ -141,9 +141,9 @@ public class ReadData
     	brTrain.close();
     	System.out.println("Finished reading the target training data");
     	
-    	Data.g_avg = (float) (ratingSum/Data.num_train);
+    /*	Data.g_avg = (float) (ratingSum/Data.num_train);
     	System.out.println(	"average rating value: " + Float.toString(Data.g_avg));
-    	// ----------------------------------------------------    	
+    */	// ----------------------------------------------------    	
 
     	
     	// ----------------------------------------------------
