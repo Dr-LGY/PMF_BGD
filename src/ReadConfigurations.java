@@ -19,7 +19,6 @@ public class ReadConfigurations
     		else if (args[k].equals("-lambda")) Data.lambda = Float.parseFloat(args[++k]);
     		else if (args[k].equals("-gamma")) Data.gamma = Float.parseFloat(args[++k]);
     		else if (args[k].equals("-fnTrainData")) Data.fnTrainData = args[++k];
-    		else if (args[k].equals("-fnAuxiliaryData")) Data.fnAuxiliaryData = args[++k];
     		else if (args[k].equals("-fnOutputData")) Data.fnOutputData = args[++k];
     		else if (args[k].equals("-fnTestData")) Data.fnTestData = args[++k];
     		else if (args[k].equals("-MinRating")) Data.MinRating = Float.parseFloat(args[++k]);
@@ -41,7 +40,6 @@ public class ReadConfigurations
     	System.out.println("gamma: " + Float.toString(Data.gamma));    		
     	System.out.println("fnTrainData: " + Data.fnTrainData);
     	System.out.println("fnTestData: " + Data.fnTestData);
-    	System.out.println("fnAuxiliaryData: " + Data.fnAuxiliaryData);    	
     	System.out.println("fnOutputData: " + Data.fnOutputData);    	
     	System.out.println("MinRating: " + Float.toString(Data.MinRating));
     	System.out.println("MaxRating: " + Float.toString(Data.MaxRating));

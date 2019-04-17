@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Train_target {
+public class Train {
 	public static void train(int iterations) {
 		//long startTime=System.nanoTime();
 		for (int iter = 0; iter < iterations; iter++){
@@ -18,13 +18,13 @@ public class Train_target {
 			for (int u = 1; u <= Data.n; u++) {
 				float grad_U[] = new float[Data.d];
 				for (int i = 1; i <= Data.m; i++ ) {
-					if (Data.r[u][i] != 0) {
+					if (Data.ratings[u][i] != 0) {
 						float pred = 0; 
 						for (int f=0; f<Data.d; f++)
 						{
 							pred += Data.U[u][f] * Data.V[i][f];
 						}
-						float error = Data.r[u][i] - pred;
+						float error = Data.ratings[u][i] - pred;
 						for(int f=0; f<Data.d; f++)
 						{	
 							
@@ -40,13 +40,13 @@ public class Train_target {
 			for (int i = 1; i <= Data.m; i++) {
 				float grad_V[] = new float[Data.d];
 				for (int u = 1; u <= Data.n; u++) {
-					if (Data.r[u][i] != 0) {
+					if (Data.ratings[u][i] != 0) {
 						float pred = 0;
 						for (int f=0; f<Data.d; f++)
 						{
 							pred += Data.U[u][f] * Data.V[i][f];
 						}
-						float error = Data.r[u][i] - pred;
+						float error = Data.ratings[u][i] - pred;
 						for(int f=0; f<Data.d; f++)
 						{	
 							grad_V[f] += -error * Data.U[u][f]   + Data.alpha_v * Data.V[i][f];

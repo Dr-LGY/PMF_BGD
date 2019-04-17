@@ -9,18 +9,9 @@ import java.util.HashSet;
 public class ReadData
 {
     public static void readData() throws IOException 
-	{
-        // --- some statistics, start from index "1"
-    	Data.userRatingSumTrain = new float[Data.n+1];
-    	Data.itemRatingSumTrain = new float[Data.m+1];
-        Data.userRatingNumTrain = new int[Data.n+1];
-        Data.itemRatingNumTrain = new int[Data.m+1];
-        
-        // ----------------------------------------------------  
-        // global average rating $\mu$
-      //  Data.g_avg = 0;  
-        
-    	// --- number of target training records
+	{      
+        // ----------------------------------------------------          
+    	// --- number of training records
         Data.num_train = 0;	
     	BufferedReader brTrain = new BufferedReader(new FileReader(Data.fnTrainData));    	
     	String line = null;
@@ -43,25 +34,11 @@ public class ReadData
     	// ----------------------------------------------------
     	
     	// ----------------------------------------------------
-		// --- Locate memory for the data structure    	
+		// --- Locate memory for the data structure
         // --- train data
-    	Data.indexUserTrain = new int[Data.num_train]; // start from index "0"
-    	Data.indexItemTrain = new int[Data.num_train];
-    	Data.ratingTrain = new float[Data.num_train];
-    	Data.r = new float [Data.n + 1][Data.m + 1];
-        
-        // --- test data
-    	Data.indexUserTest = new int[Data.num_test];
-    	Data.indexItemTest = new int[Data.num_test];
-    	Data.ratingTest = new float[Data.num_test];
-    	// ----------------------------------------------------
+    	Data.ratings = new float [Data.n + 1][Data.m + 1];
+   
 
-        
-    	// ----------------------------------------------------        
-        int id_case=0;
-    	double ratingSum=0;
-
-    	// ----------------------------------------------------
     	// Training data: (userID,itemID,rating)
 		brTrain = new BufferedReader(new FileReader(Data.fnTrainData));    	
     	line = null;
@@ -71,20 +48,7 @@ public class ReadData
     		int userID = Integer.parseInt(terms[0]);
     		int itemID = Integer.parseInt(terms[1]);
     		float rating = Float.parseFloat(terms[2]);
-    		Data.indexUserTrain[id_case] = userID;
-    		Data.indexItemTrain[id_case] = itemID;
-    		Data.ratingTrain[id_case] = rating;
-    		Data.r[userID][itemID] = rating;
-    		id_case+=1;
-    		    		
-    		// ---
-    		Data.userRatingSumTrain[userID] += rating;
-    		Data.userRatingNumTrain[userID] += 1;    			
-    		Data.itemRatingSumTrain[itemID] += rating;
-    		Data.itemRatingNumTrain[itemID] += 1;
-    		
-    		ratingSum+=rating;
-
+    		Data.ratings[userID][itemID] = rating;
     	}
     	brTrain.close();
     	System.out.println("Finished reading the target training data");
@@ -95,7 +59,7 @@ public class ReadData
     	// --- normalization    	
     	// ----------------------------------------------------
     	// Test data: (userID,itemID,rating)   	
-    	id_case = 0; // initialize it to zero
+    	int id_case = 0; // initialize it to zero
     	brTest = new BufferedReader(new FileReader(Data.fnTestData));
     	line = null;
     	while ((line = brTest.readLine())!=null)

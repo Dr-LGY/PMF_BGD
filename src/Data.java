@@ -10,7 +10,6 @@ public class Data
 	// === Configurations	
 	// the number of latent dimensions
 	public static int d = 20; 
-	public static int num_rating_types = 10; // should be different for different data
 
 	// tradeoff $\alpha_u$
 	public static float alpha_u = 0.01f;
@@ -33,7 +32,6 @@ public class Data
 
 	 // === Input data files
 	public static String fnTrainData = "C:\\Users\\LGY\\Desktop\\DATA\\ml-100k\\u1.base";
-	public static String fnAuxiliaryData = "C:/Users/Administrator/Desktop/Áª°îÑ§Ï°/ML10M/copy1_01.auxiliary";
 	public static String fnTestData = "C:\\Users\\LGY\\Desktop\\DATA\\ml-100k\\u1.test";
 	public static String fnOutputData = "";
 
@@ -47,28 +45,15 @@ public class Data
 	public static float MaxRating = 5.0f; // maximum rating value
 
 	// scan number over the whole data
-	public static int num_iterations = 600; 
+	public static int num_iterations = 1000; //600
 
-	// === training data (target data and auxiliary dta)
-	public static int[] indexUserTrain; // start from index "0"
-	public static int[] indexItemTrain; 
-	public static float[] ratingTrain;
-	public static float[][] r;
-	public static HashMap<Integer, HashMap<Integer, HashSet<Integer>>> Train_ExplicitFeedbacksGraded 
-	= new HashMap<Integer, HashMap<Integer, HashSet<Integer>>>();
-	public static HashMap<Integer, HashSet<Integer>> Train_ExplicitFeedbacks 
-	= new HashMap<Integer, HashSet<Integer>>();
+	// === training data (target data)
+	public static float[][] ratings;
 
 	// === test data
 	public static int[] indexUserTest;
 	public static int[] indexItemTest;
 	public static float[] ratingTest;
-
-	// === some statistics, start from index "1"
-	public static float[] userRatingSumTrain;
-	public static float[] itemRatingSumTrain;
-	public static int[] userRatingNumTrain;
-	public static int[] itemRatingNumTrain;
 
 	// === model parameters to learn, start from index "1"
 	public static float[][] U;
