@@ -15,8 +15,6 @@ public class ReadData
     	Data.itemRatingSumTrain = new float[Data.m+1];
         Data.userRatingNumTrain = new int[Data.n+1];
         Data.itemRatingNumTrain = new int[Data.m+1];
-        Data.user_graded_rating_number = new int[Data.n+1][Data.num_rating_types+1];
-        Data.user_rating_number = new int[Data.n+1];
         
         // ----------------------------------------------------  
         // global average rating $\mu$
@@ -30,7 +28,7 @@ public class ReadData
     	{
     		Data.num_train += 1;
     	}
-    	System.out.println("num_train_target: " + Data.num_train_target);
+    	System.out.println("num_train: " + Data.num_train);
     	
     	    	
     	// --- number of test records
@@ -62,7 +60,6 @@ public class ReadData
     	// ----------------------------------------------------        
         int id_case=0;
     	double ratingSum=0;
-    	int gradedNum[] = new int[Data.num_rating_types + 1];
 
     	// ----------------------------------------------------
     	// Training data: (userID,itemID,rating)
@@ -87,63 +84,11 @@ public class ReadData
     		Data.itemRatingNumTrain[itemID] += 1;
     		
     		ratingSum+=rating;
-    		
-    		// 
-    		int g = (int) (rating*2); // convert grade index to 1,2,...,10
-    		if(Data.Train_ExplicitFeedbacksGraded.containsKey(userID))
-    		{
-    			HashMap<Integer, HashSet<Integer>> g2itemSet 
-    			= Data.Train_ExplicitFeedbacksGraded.get(userID);
-    			if(g2itemSet.containsKey(g))
-    			{
-    				HashSet<Integer> itemSet = g2itemSet.get(g);
-    				itemSet.add(itemID);
-    				g2itemSet.put(g, itemSet);
-    			}
-    			else
-    			{
-    				HashSet<Integer> itemSet = new HashSet<Integer>();
-    				itemSet.add(itemID);
-    				g2itemSet.put(g, itemSet);
-    			}
-    			Data.Train_ExplicitFeedbacksGraded.put(userID, g2itemSet);
-    		}
-    		else
-    		{
-    			HashMap<Integer,HashSet<Integer>> g2itemSet 
-    			= new HashMap<Integer, HashSet<Integer>>();
-    			HashSet<Integer> itemSet = new HashSet<Integer>();
-    			itemSet.add(itemID);
-    			g2itemSet.put(g, itemSet);
-    			Data.Train_ExplicitFeedbacksGraded.put(userID, g2itemSet);
-    		}
 
-    		
-    		
-    		if(Data.Train_ExplicitFeedbacks.containsKey(userID))
-			{
-				HashSet<Integer> itemSet = Data.Train_ExplicitFeedbacks.get(userID);
-				itemSet.add(itemID);
-				Data.Train_ExplicitFeedbacks.put(userID, itemSet);
-			}
-			else
-			{
-				HashSet<Integer> itemSet = new HashSet<Integer>();
-				itemSet.add(itemID);
-				Data.Train_ExplicitFeedbacks.put(userID, itemSet);
-			}
-    		
-    		// ---
-    		Data.user_graded_rating_number[userID][g] += 1;
-    		Data.user_rating_number[userID] += 1;
-    		gradedNum[g]++;
     	}
     	brTrain.close();
     	System.out.println("Finished reading the target training data");
-    	
-    /*	Data.g_avg = (float) (ratingSum/Data.num_train);
-    	System.out.println(	"average rating value: " + Float.toString(Data.g_avg));
-    */	// ----------------------------------------------------    	
+    	// ----------------------------------------------------
 
     	
     	// ----------------------------------------------------

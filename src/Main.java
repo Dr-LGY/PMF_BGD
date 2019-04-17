@@ -12,6 +12,7 @@ import java.io.*;
 //movielens-10M
 //java -Xmx2048m Main -d 20 -alpha_u 0.01 -alpha_v 0.01 -alpha_w 0.01 -alpha_g 0 -beta_u 0.01 -beta_v 0.01 1 -lambda 1 -rho 0.5 -gamma 0.01 -fnTrainData ./ml-10m/copy1.target -fnTestData ./ml-10m/copy1.test -fnAuxiliaryData ./ml-10m/copy1.auxiliary -fnOutputData Result_Federated_ML10M.txt -n 71567 -m 10681 -num_iterations 50 -MinRating 1 -MaxRating 5
 
+//PMF_BGD
 
 public class Main 
 {
@@ -26,39 +27,10 @@ public class Main
 		// 3. apply initialization
 		Initialization.initialization();
 		
-		// 4. train the auxiliary
-	//	Auxiliary.train(Data.num_iterations);
-	
-		//adaptive
-//		for (int i=1; i<Data.m+1; i++)
-//    	{
-//    		for (int f=0; f<Data.d; f++)
-//    		{
-//    			Data.V[i][f] = Data.V1[i][f];
-//    		}
-//    	}
-		
-		// 5. train the target
+		// 4. training
 		Train_target.train(Data.num_iterations);
 		
-		//adaptive
-//		for (int i=1; i<Data.m+1; i++)
-//    	{
-//    		for (int f=0; f<Data.d; f++)
-//    		{
-//    			Data.V[i][f] += Data.V1[i][f];
-//    		}
-//    	}
-		
-		//Train_target.train(Data.num_iterations);
-
-//		// 6. exchange V and V1	collaborative		
-//		Auxiliary.train1(Data.num_iterations / 2);
-//		
-//		Train_target.train1(Data.num_iterations / 2);
-        
 		// 5. test
 		Test.test();		
-//    	Divide.readData();
     }
 }
