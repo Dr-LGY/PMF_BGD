@@ -15,7 +15,6 @@ public class Data
 	public static float alpha_u = 0.01f;
 	// tradeoff $\alpha_v$
 	public static float alpha_v = 0.01f;
-	public static float alpha_v1 = 0.01f;
 	
 	// tradeoff $\beta_u$
 	public static float beta_u = 0.01f;
@@ -58,7 +57,6 @@ public class Data
 	// === model parameters to learn, start from index "1"
 	public static float[][] U;
 	public static float[][] V;
-	public static float[][] V1;
 
 	// === file operation
 	public static FileWriter fw ;

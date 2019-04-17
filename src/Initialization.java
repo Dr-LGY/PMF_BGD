@@ -6,9 +6,7 @@ public class Initialization
 	{
     	// --- model parameters to learn, start from index "1"
         Data.U = new float[Data.n+1][Data.d];
-        Data.V = new float[Data.m+1][Data.d];
-        Data.V1 = new float[Data.m+1][Data.d];
-        
+        Data.V = new float[Data.m+1][Data.d];        
     
     	// ======================================================    	
     	// --- initialization of U, V
@@ -25,7 +23,6 @@ public class Initialization
     		for (int f=0; f<Data.d; f++)
     		{
     			Data.V[i][f] = (float) ( (Math.random()-0.5)*0.01 );
-    			Data.V1[i][f] = (float) ( (Math.random()-0.5)*0.01 );
     		}
     	}
     	// ======================================================

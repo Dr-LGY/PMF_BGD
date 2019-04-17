@@ -31,7 +31,7 @@ public class Main
 		Initialization.initialization();
 		
 		// 4. training
-		Train_target.train(Data.num_iterations);
+		Train.train(Data.num_iterations);
 		
 		// 5. test
 		Test.test();		

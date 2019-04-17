@@ -55,8 +55,10 @@ public class ReadData
     	// ----------------------------------------------------
 
     	
-    	// ----------------------------------------------------
-    	// --- normalization    	
+    	// --- test data
+    	Data.indexUserTest = new int[Data.num_test];
+    	Data.indexItemTest = new int[Data.num_test];
+    	Data.ratingTest = new float[Data.num_test];
     	// ----------------------------------------------------
     	// Test data: (userID,itemID,rating)   	
     	int id_case = 0; // initialize it to zero
@@ -76,7 +78,5 @@ public class ReadData
     	brTest.close();
     	System.out.println("Finished reading the target test data");
     	// ----------------------------------------------------
-
-
     }    
 }
