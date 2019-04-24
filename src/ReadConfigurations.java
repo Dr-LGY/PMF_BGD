@@ -66,7 +66,7 @@ public class ReadConfigurations
 			Data.bw.write("MaxRating: " + Float.toString(Data.MaxRating) + "\r\n");
 			Data.bw.write("n: " + Integer.toString(Data.n) + "\r\n");
 			Data.bw.write("m: " + Integer.toString(Data.m) + "\r\n");
-			Data.bw.write("num_iterations: " + Integer.toString(Data.num_iterations));
+			Data.bw.write("num_iterations: " + Integer.toString(Data.num_iterations) + "\r\n");
 			Data.bw.flush();
 
 		} catch (IOException e1) {
