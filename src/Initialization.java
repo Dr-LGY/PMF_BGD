@@ -1,4 +1,3 @@
-// package TMF_OPC;
 
 public class Initialization
 {

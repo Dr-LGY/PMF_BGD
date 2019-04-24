@@ -1,4 +1,3 @@
-// package TMF_OPC;
 
 import java.io.IOException;
 import java.util.*;
@@ -46,18 +45,18 @@ public class Test
     	//output result
     	String result = "MAE:" + Float.toString(MAE) +  "| RMSE:" + Float.toString(RMSE);
     	System.out.println(result);
-//    	try {
-//			Data.bw.write(result +"\r\n"); 
-//			Data.bw.flush();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+    	
+    	//output result to file
+    	try {
+			Data.bw.write(result +"\r\n"); 
+			Data.bw.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     // =============================================================
    
 }
-
-
 
 

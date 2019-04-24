@@ -1,4 +1,3 @@
-// package TMF_OPC;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -15,14 +14,6 @@ public class Data
 	public static float alpha_u = 0.01f;
 	// tradeoff $\alpha_v$
 	public static float alpha_v = 0.01f;
-	
-	// tradeoff $\beta_u$
-	public static float beta_u = 0.01f;
-	// tradeoff $\beta_v$
-	public static float beta_v = 0.01f; 
-
-	// 
-	public static float lambda = 1.0f; // when lambda=1, uses auxiliary data
 	 
 	// learning rate $\gamma$
 	public static float gamma = 1000f;
@@ -44,7 +35,7 @@ public class Data
 	public static float MaxRating = 5.0f; // maximum rating value
 
 	// scan number over the whole data
-	public static int num_iterations = 1000; //600
+	public static int num_iterations = 500; //600
 
 	// === training data (target data)
 	public static float[][] ratings;
